@@ -1,0 +1,59 @@
+repositories:
+  - name: jaegertracing
+    url: https://jaegertracing.github.io/helm-charts
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+  - name: incubator
+    url: https://charts.helm.sh/incubator
+
+
+releases:
+  - name: grafana
+    chart: grafana/grafana
+    needs:
+      - prometheus
+      - jaeger
+      - tempo
+    namespace: observability
+    createNamespace: true
+    installed: true
+    missingFileHandler: Error
+    values:
+      - values/grafana.yaml
+
+  - name: jaeger
+    chart: jaegertracing/jaeger
+    namespace: observability
+    needs:
+      - cassandra
+    installed: true
+    missingFileHandler: Error
+    values:
+      - values/jaeger.yaml
+
+  - name: cassandra
+    chart: incubator/cassandra
+    namespace: observability
+    createNamespace: true
+    installed: true
+    missingFileHandler: Error
+    values:
+      - values/cassandra.yaml
+
+  - name: prometheus
+    chart: prometheus-community/prometheus
+    namespace: observability
+    installed: true
+    missingFileHandler: Error
+    values:
+      - values/prometheus.yaml
+
+  - name: tempo
+    chart: grafana/tempo
+    namespace: observability
+    installed: true
+    missingFileHandler: Error
+    values:
+      - values/tempo.yaml
