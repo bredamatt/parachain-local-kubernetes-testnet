@@ -625,21 +625,24 @@ traces:
       enabled: false
       # -- Jaeger GRPC receiver config
       receiverConfig: {}
-    thriftBinary:
-      # -- Enable Tempo to ingest Jaeger Thrift Binary traces
-      enabled: false
-      # -- Jaeger Thrift Binary receiver config
-      receiverConfig: {}
     thriftCompact:
       # -- Enable Tempo to ingest Jaeger Thrift Compact traces
-      enabled: false
+      enabled: true
       # -- Jaeger Thrift Compact receiver config
-      receiverConfig: {}
+      receiverConfig:
+        endpoint: "0.0.0.0:6831"
+    thriftBinary:
+      # -- Enable Tempo to ingest Jaeger Thrift Binary traces
+      enabled: true
+      # -- Jaeger Thrift Binary receiver config
+      receiverConfig:
+        endpoint: "0.0.0.0:6832"
     thriftHttp:
       # -- Enable Tempo to ingest Jaeger Thrift HTTP traces
-      enabled: false
+      enabled: true
       # -- Jaeger Thrift HTTP receiver config
-      receiverConfig: {}
+      receiverConfig:
+        endpoint: "0.0.0.0:14250"
   zipkin:
     # -- Enable Tempo to ingest Zipkin traces
     enabled: false
@@ -1102,7 +1105,7 @@ prometheusRule:
   #       expr: sum(rate(container_cpu_usage_seconds_total[1m])) by (node, namespace, pod, container)
 
 minio:
-  enabled: true
+  enabled: false
   mode: standalone
   rootUser: grafana-tempo
   rootPassword: supersecret
