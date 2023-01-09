@@ -14,7 +14,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 allInOne:
-  enabled: true
+  enabled: false
   image: jaegertracing/all-in-one
   pullPolicy: IfNotPresent
   extraEnv: []
@@ -240,10 +240,10 @@ ingester:
 agent:
   podSecurityContext: {}
   securityContext: {}
-  enabled: false
+  enabled: true
   annotations: {}
   image: jaegertracing/jaeger-agent
-  # tag: 1.22
+  tag: latest
   imagePullSecrets: []
   pullPolicy: IfNotPresent
   cmdlineParams: {}
