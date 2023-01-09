@@ -51,9 +51,9 @@ releases:
       - values/prometheus.yaml
 
   - name: tempo
-    chart: grafana/tempo
+    chart: grafana/tempo-distributed
     namespace: observability
     installed: true
     missingFileHandler: Error
     values:
-      - values/tempo.yaml
+      - values/tempo_distributed.yaml
