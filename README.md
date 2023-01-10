@@ -7,3 +7,6 @@ This would be useful for iterative deployments of parachains and testnets, where
 - monitoring 
 - profiling
 
+## performance
+
+Note that performance may not be representative of clusters running on cloud providers.
