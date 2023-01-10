@@ -1,0 +1,68 @@
+repositories:
+  - name: parity
+    url: https://paritytech.github.io/helm-charts/
+
+helmDefaults:
+  createNamespace: true
+  waitForJobs: true
+
+releases:
+## relay chain Rococo ##
+  - name: validator-alice
+    namespace: rococo
+    chart: parity/node
+    version: 4.2.5
+    values:
+      - node:
+          chain: rococo-local
+          replicas: 1
+          resources:
+            requests:
+              cpu: 2
+              memory: 8Gi
+          role: authority
+          allowUnsafeRpcMethods: true
+          customChainspecUrl: "https://raw.githubusercontent.com/bredamatt/parachain-local-kubernetes-testnet/master/helmfiles/relay/rococo-local-chainspec-raw.json"
+          customNodeKey: "91cb59d86820419075b08e3043cd802ba3506388d8b161d2d4acd203af5194c1"
+          chainKeystore:
+            mountInMemory:
+              enabled: true
+          chainData:
+            database: paritydb
+            storageClass: standard
+            pruning: 10
+            volumeSize: 1Gi
+          flags:
+            - "--alice"
+        extraLabels:
+          validatorAccount: "5GNJqTPyNqANBkUVMN1LPPrxXnFouWXoe2wNSmmEoLctxiZY" # Alice address
+          ss58Format: "0"
+       
+  - name: validator-bob
+    namespace: rococo
+    chart: parity/node
+    version: 4.2.5
+    values:
+      - node:
+          chain: rococo-local
+          role: authority
+          customChainspecUrl: "https://raw.githubusercontent.com/bredamatt/parachain-local-kubernetes-testnet/master/helmfiles/relay/rococo-local-chainspec-raw.json"
+          allowUnsafeRpcMethods: true
+          replicas: 1
+          resources:
+            requests:
+              cpu: 2
+              memory: 8Gi
+          chainKeystore:
+            mountInMemory:
+              enabled: true
+          chainData:
+            database: paritydb
+            storageClass: standard
+            pruning: 10
+            volumeSize: 1Gi
+          flags:
+            - "--bob --bootnodes /dns4/validator-alice-node-0/tcp/30333/p2p/12D3KooWMeR4iQLRBNq87ViDf9W7f6cc9ydAPJgmq48rAH116WoC" 
+        extraLabels:
+          validatorAccount: "5HpG9w8EBLe5XCrbczpwq5TSXvedjrBGCwqxK1iQ7qUsSWFc" # Bob address
+          ss58Format: "0"
