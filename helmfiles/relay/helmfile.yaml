@@ -19,7 +19,7 @@ releases:
           resources:
             requests:
               cpu: 2
-              memory: 8Gi
+              memory: 4Gi
           role: authority
           allowUnsafeRpcMethods: true
           customChainspecUrl: "https://raw.githubusercontent.com/bredamatt/parachain-local-kubernetes-testnet/master/helmfiles/relay/rococo-local-chain-spec-raw.json"
@@ -52,6 +52,9 @@ releases:
           resources:
             requests:
               cpu: 2
+              memory: 4Gi
+            limits:
+              cpu: 3
               memory: 8Gi
           chainKeystore:
             mountInMemory:
