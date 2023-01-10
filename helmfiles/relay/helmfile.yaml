@@ -22,7 +22,7 @@ releases:
               memory: 8Gi
           role: authority
           allowUnsafeRpcMethods: true
-          customChainspecUrl: "https://raw.githubusercontent.com/bredamatt/parachain-local-kubernetes-testnet/master/helmfiles/relay/rococo-local-chainspec-raw.json"
+          customChainspecUrl: "https://raw.githubusercontent.com/bredamatt/parachain-local-kubernetes-testnet/master/helmfiles/relay/rococo-local-chain-spec-raw.json"
           customNodeKey: "91cb59d86820419075b08e3043cd802ba3506388d8b161d2d4acd203af5194c1"
           chainKeystore:
             mountInMemory:
@@ -46,7 +46,7 @@ releases:
       - node:
           chain: rococo-local
           role: authority
-          customChainspecUrl: "https://raw.githubusercontent.com/bredamatt/parachain-local-kubernetes-testnet/master/helmfiles/relay/rococo-local-chainspec-raw.json"
+          customChainspecUrl: "https://raw.githubusercontent.com/bredamatt/parachain-local-kubernetes-testnet/master/helmfiles/relay/rococo-local-chain-spec-raw.json"
           allowUnsafeRpcMethods: true
           replicas: 1
           resources:
