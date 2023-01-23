@@ -8,7 +8,6 @@ repositories:
   - name: incubator
     url: https://charts.helm.sh/incubator
 
-
 releases:
   - name: grafana
     chart: grafana/grafana
@@ -28,7 +27,7 @@ releases:
     namespace: observability
     needs:
       - cassandra
-    installed: true
+    installed: false
     missingFileHandler: Error
     values:
       - values/jaeger.yaml
