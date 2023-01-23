@@ -1,0 +1,57 @@
+repositories:
+  - name: parity
+    url: https://paritytech.github.io/helm-charts/
+
+helmDefaults:
+  createNamespace: true
+  waitForJobs: true
+
+releases:
+  ## Para chain 2k ##
+  - name: alice-2k
+    namespace: rococo
+    chart: parity/node
+    version: 4.2.5
+    values:
+      - image:
+          repository: "ddorgan/execute-xcm-parachain"
+          tag: "latest"
+      - node:
+          role: collator
+          chain: "2k"
+          isParachain: true
+          command: "/usr/local/bin/parachain-template-node"
+          resources:
+            requests:
+              cpu: 2
+              memory: 4Gi
+          allowUnsafeRpcMethods: true
+          chainKeystore:
+            mountInMemory:
+              enabled: true
+          chainData:
+            pruning: 100
+            volumeSize: 1Gi
+            database: paritydb
+            storageClass: standard
+          collatorRelayChain:
+            chain: "rococo-local"
+            chainData:
+              database: paritydb
+              storageClass: standard
+              mountInMemory:
+                enabled: true
+            chainKeystore:
+              mountInMemory:
+                enabled: true
+            flags:
+              - "--bootnodes /dns4/validator-alice-node-0/tcp/30333/p2p/12D3KooWMeR4iQLRBNq87ViDf9W7f6cc9ydAPJgmq48rAH116WoC" 
+              - "--execution wasm --bootnodes /dns4/validator-alice-node-0/tcp/30333/p2p/12D3KooWMeR4iQLRBNq87ViDf9W7f6cc9ydAPJgmq48rAH116WoC"
+            customChainspecUrl: "https://raw.githubusercontent.com/bredamatt/parachain-local-kubernetes-testnet/master/helmfiles/relay/rococo-local-chain-spec-raw.json"
+          flags:
+            - "--alice"
+            - "--force-authoring"
+        extraLabels:
+          paraId: "2000"
+          ss58Format: "0"
+          collatorAccount: 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
