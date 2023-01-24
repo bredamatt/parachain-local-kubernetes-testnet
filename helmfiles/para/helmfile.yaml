@@ -30,7 +30,7 @@ releases:
             mountInMemory:
               enabled: true
           chainData:
-            pruning: 100
+            pruning: 10
             volumeSize: 1Gi
             database: paritydb
             storageClass: standard
@@ -39,6 +39,7 @@ releases:
             chainData:
               database: paritydb
               storageClass: standard
+              volumeSize: 1Gi
               mountInMemory:
                 enabled: true
             chainKeystore:
