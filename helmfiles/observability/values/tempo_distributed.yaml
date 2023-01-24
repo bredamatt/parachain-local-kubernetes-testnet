@@ -622,7 +622,7 @@ traces:
   jaeger:
     grpc:
       # -- Enable Tempo to ingest Jaeger GRPC traces
-      enabled: false
+      enabled: true
       # -- Jaeger GRPC receiver config
       receiverConfig: {}
     thriftCompact:
@@ -642,7 +642,7 @@ traces:
       enabled: true
       # -- Jaeger Thrift HTTP receiver config
       receiverConfig:
-        endpoint: "0.0.0.0:14250"
+        endpoint: "0.0.0.0:14255"
   zipkin:
     # -- Enable Tempo to ingest Zipkin traces
     enabled: false
