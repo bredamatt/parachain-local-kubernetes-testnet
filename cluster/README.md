@@ -8,7 +8,7 @@ This creates a `kind` cluster locally. Please see `config/` for how this cluster
 
 ### Containers
 
-- 7x worker nodes with 4Gb RAM each
+- 3x worker nodes with 10Gb RAM each
 - 1x control plane node with 2Gb RAM
 
 ### Registry
