@@ -13,6 +13,9 @@ releases:
     chart: parity/node
     version: 4.2.5
     values:
+      - image:
+          repository: localhost:5001/tracing # Local registry
+          tag: latest
       - jaegerAgent:
           ports:
             compactPort: 6831
@@ -53,6 +56,9 @@ releases:
     chart: parity/node
     version: 4.2.5
     values:
+      - image:
+          repository: localhost:5001/tracing # Local registry
+          tag: latest
       - jaegerAgent:
           ports:
             compactPort: 6831
