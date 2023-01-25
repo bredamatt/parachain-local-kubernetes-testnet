@@ -614,7 +614,7 @@ queryFrontend:
 
 search:
   # -- Enable Tempo search
-  enabled: false
+  enabled: true
 
 multitenancyEnabled: false
 
