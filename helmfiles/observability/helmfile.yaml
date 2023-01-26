@@ -55,4 +55,21 @@ releases:
     installed: true
     missingFileHandler: Error
     values:
-      - values/tempo_distributed.yaml
+      - traces:
+          jaeger:
+            grpc:
+              enabled: true
+            thriftCompact:
+              enabled: true
+              receiverConfig:
+                endpoint: "0.0.0.0:6831"
+            thriftBinary:
+              enabled: true
+              receiverConfig:
+                endpoint: "0.0.0.0:6832"
+            thriftHttp:
+              enabled: true
+              receiverConfig:
+                endpoint: "0.0.0.0:14255"
+      - search:
+          enabled: true

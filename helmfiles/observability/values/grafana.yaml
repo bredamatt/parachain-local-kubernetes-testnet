@@ -513,7 +513,8 @@ datasources:
       isDefault: true
     - name: Tempo
       type: tempo
-      url: http://tempo
+      access: proxy
+      url: http://tempo-query-frontend.observability.svc.cluster.local:3100
     
 ## Configure grafana alerting (can be templated)
 ## ref: http://docs.grafana.org/administration/provisioning/#alerting

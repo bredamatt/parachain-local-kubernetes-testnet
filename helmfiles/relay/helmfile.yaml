@@ -14,7 +14,7 @@ releases:
     version: 4.2.5
     values:
       - image:
-          repository: localhost:5001/tracing # Local registry
+          repository: parity/polkadot # Local registry
           tag: latest
       - jaegerAgent:
           ports:
@@ -57,7 +57,7 @@ releases:
     version: 4.2.5
     values:
       - image:
-          repository: localhost:5001/tracing # Local registry
+          repository: parity/polkadot # Local registry
           tag: latest
       - jaegerAgent:
           ports:
