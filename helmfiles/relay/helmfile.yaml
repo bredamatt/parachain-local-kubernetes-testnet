@@ -14,8 +14,10 @@ releases:
     version: 4.2.5
     values:
       - image:
-          repository: parity/polkadot # Local registry
+          repository: mlvb91/polkadot-tracing-branch # Local registry
           tag: latest
+      - imagePullSecrets:
+          - name: mlvb91
       - jaegerAgent:
           ports:
             compactPort: 6831
@@ -57,7 +59,7 @@ releases:
     version: 4.2.5
     values:
       - image:
-          repository: parity/polkadot # Local registry
+          repository: parity/polkadot
           tag: latest
       - jaegerAgent:
           ports:
@@ -69,7 +71,7 @@ releases:
             port: 14250
       - node:
           tracing:
-            enabled: true
+            enabled: false
           chain: rococo-local
           role: authority
           customChainspecUrl: "https://raw.githubusercontent.com/bredamatt/parachain-local-kubernetes-testnet/master/helmfiles/relay/rococo-local-chain-spec-raw.json"
