@@ -70,7 +70,7 @@ releases:
                 dimensions: []
             storage:
               remote_write:
-                - url: http://prometheus-server.observability.svc.cluster.local:9090/api/v1/write
+                - url: http://prometheus-server.observability.svc.cluster.local:80/api/v1/write
       - global_overrides:
           metrics_generator_processors:
             - service-graphs
