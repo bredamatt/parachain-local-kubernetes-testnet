@@ -49,7 +49,7 @@ releases:
             database: paritydb
             storageClass: standard
             pruning: 10
-            volumeSize: 1Gi
+            volumeSize: 10Gi
           flags:
             - "--alice"
         extraLabels:
@@ -94,7 +94,7 @@ releases:
             database: paritydb
             storageClass: standard
             pruning: 10
-            volumeSize: 1Gi
+            volumeSize: 10Gi
           flags:
             - "--bob --bootnodes /dns4/validator-alice-node-0/tcp/30333/p2p/12D3KooWMeR4iQLRBNq87ViDf9W7f6cc9ydAPJgmq48rAH116WoC" 
 
