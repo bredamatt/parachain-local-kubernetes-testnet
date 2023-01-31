@@ -55,6 +55,26 @@ releases:
     installed: true
     missingFileHandler: Error
     values:
+      - server:
+          logLeveL: debug
+      - metricsGenerator:
+          enabled: true
+          config:
+            registry:
+              collection_interval: 15s
+              stale_duration: 15m
+            processor:
+              service_graphs:
+                dimensions: []
+              span_metrics:
+                dimensions: []
+            storage:
+              remote_write:
+                - url: http://prometheus-server.observability.svc.cluster.local:9090/api/v1/write
+      - global_overrides:
+          metrics_generator_processors:
+            - service-graphs
+            - span-metrics
       - traces:
           jaeger:
             grpc:
