@@ -246,7 +246,8 @@ agent:
   tag: latest
   imagePullSecrets: []
   pullPolicy: IfNotPresent
-  cmdlineParams: {}
+  cmdlineParams:
+    reporter.grpc.host-port: tempo-distributor.observability.svc.cluster.local:14250
   extraEnv: []
   daemonset:
     useHostPort: false
