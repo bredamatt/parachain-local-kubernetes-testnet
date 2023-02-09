@@ -261,7 +261,7 @@ agent:
     loadBalancerSourceRanges: []
     type: ClusterIP
     # zipkinThriftPort :accept zipkin.thrift over compact thrift protocol
-    zipkinThriftPort: 5775
+    # zipkinThriftPort: 5775
     # compactPort: accept jaeger.thrift over compact thrift protocol
     compactPort: 6831
     # binaryPort: accept jaeger.thrift over binary thrift protocol
