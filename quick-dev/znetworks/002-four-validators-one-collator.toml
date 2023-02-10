@@ -1,0 +1,36 @@
+[settings]
+timeout = 1000
+
+[relaychain]
+chain = "rococo-local"
+command = "polkadot"
+
+  [[relaychain.nodes]]
+  name = "alice"
+  args = [ "--alice", "-lruntime=debug,parachain=trace", "--jaeger-agent=127.0.0.1:6831" ]
+
+  [[relaychain.nodes]]
+  name = "bob"
+  args = [ "--bob", "-lruntime=debug,parachain=trace" ]
+
+  [[relaychain.nodes]]
+  name = "charlie"
+  args = [ "--charlie", "-lruntime=debug,parachain=trace" ]
+
+  [[relaychain.nodes]]
+  name = "dave"
+  args = [ "--dave", "-lruntime=debug,parachain=trace" ]
+
+[[parachains]]
+id = 100
+addToGenesis = false
+
+  [parachains.collator]
+  name = "collator01"
+  command = "adder-collator"
+  args = [ "-lruntime=debug,parachain=trace" ]
+
+[types.Header]
+number = "u64"
+parent_hash = "Hash"
+post_state = "Hash"
