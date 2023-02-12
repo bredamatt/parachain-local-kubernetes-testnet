@@ -1,6 +1,9 @@
 [settings]
 timeout = 1000
 
+[relaychain.genesis.runtime.runtime_genesis_config.configuration.config]
+max_validators_per_core = 1
+
 [relaychain]
 chain = "rococo-local"
 command = "polkadot"
